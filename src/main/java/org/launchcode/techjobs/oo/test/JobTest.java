@@ -67,5 +67,40 @@ public class JobTest {
         assertFalse(job4 == job5);
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job6 = new Job(
+                "Software Engineer",
+                new Employer("Qualcomm"),
+                new Location("Tokyo"),
+                new PositionType("Front End"),
+                new CoreCompetency("JavaScript")
+        );
+
+        assertEquals('\n', job6.toString().charAt(0));
+        assertEquals('\n', job6.toString().charAt(job6.toString().length() - 1));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job7 = new Job(
+                "Software Engineer",
+                new Employer("Qualcomm"),
+                new Location("Tokyo"),
+                new PositionType("Front End"),
+                new CoreCompetency("JavaScript")
+        );
+
+        assertEquals(
+    "\nID: " + job7.getId() +
+            "\nName: Software Engineer" +
+            "\nEmployer: Qualcomm" +
+            "\nLocation: Tokyo" +
+            "\nPosition Type: Front End" +
+            "\nCore Competency: JavaScript\n",
+            job7.toString()
+        );
+    }
+
 
 }
