@@ -93,12 +93,33 @@ public class JobTest {
 
         assertEquals(
     "\nID: " + job7.getId() +
-            "\nName: Software Engineer" +
-            "\nEmployer: Qualcomm" +
-            "\nLocation: Tokyo" +
-            "\nPosition Type: Front End" +
-            "\nCore Competency: JavaScript\n",
+                "\nName: Software Engineer" +
+                "\nEmployer: Qualcomm" +
+                "\nLocation: Tokyo" +
+                "\nPosition Type: Front End" +
+                "\nCore Competency: JavaScript\n",
             job7.toString()
+        );
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job jobIsEmpty = new Job(
+                "",
+                new Employer(""),
+                new Location(""),
+                new PositionType(""),
+                new CoreCompetency("")
+        );
+
+        assertEquals(
+    "\nID: " + jobIsEmpty.getId() +
+                "\nName: Data not available" +
+                "\nEmployer: Data not available" +
+                "\nLocation: Data not available" +
+                "\nPosition Type: Data not available" +
+                "\nCore Competency: Data not available\n",
+            jobIsEmpty.toString()
         );
     }
 
